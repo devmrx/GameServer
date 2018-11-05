@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KursWpf.Games;
 
 namespace KursWpf {
     /// <summary>
@@ -22,8 +23,11 @@ namespace KursWpf {
 
 
 
-        public PageGames() {
+        public PageGames(Server server) {
             InitializeComponent();
+
+            GamesList.ItemsSource = server.Games;
+
         }
 
 

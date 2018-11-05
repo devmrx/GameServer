@@ -11,7 +11,10 @@ namespace KursWpf.Games
 
         public CSGO() {
             Name = "Counter-Strike: Global Offensive";
+            ShortName = "Counter-Strike: Gl...";
+            ImgGame = "Image/CounterStrikeGO.jpg";
             MaxGamersSession = 10;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
         }
     }
 }

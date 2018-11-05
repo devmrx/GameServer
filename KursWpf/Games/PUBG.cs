@@ -10,7 +10,11 @@ namespace KursWpf.Games
     {
         public PUBG() {
             Name = "PlayerUnknown’s Battlegrounds";
+            ShortName = "Playerunknown's...";
+            ImgGame = "Image/PUBG.jpg";
             MaxGamersSession = 100;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
+
         }
 
     }

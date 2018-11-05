@@ -10,7 +10,10 @@ namespace KursWpf.Games
     {
         public Chess() {
             Name = "Chess";
+            ShortName = "Chess";
+            ImgGame = "Image/Chess.jpg";
             MaxGamersSession = 2;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
         }
 
         private void CreateSession() {

@@ -10,7 +10,10 @@ namespace KursWpf.Games
 
         public Dota2() {
             Name = "Dota 2";
+            ShortName = "Dota 2";
+            ImgGame = "Image/Dota2.jpg";
             MaxGamersSession = 10;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
         }
     }
 }

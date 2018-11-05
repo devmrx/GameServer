@@ -10,7 +10,10 @@ namespace KursWpf.Games
     {
         public Overwatch() {
             Name = "Overwatch";
+            ShortName = "Overwatch";
+            ImgGame = "Image/Overwatch.jpg";
             MaxGamersSession = 30;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
         }
     }
 }

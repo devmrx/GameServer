@@ -10,7 +10,10 @@ namespace KursWpf.Games
     {
         public WOW() {
             Name = "World of Warships";
+            ShortName = "World of Warships";
+            ImgGame = "Image/World of Warships.jpg";
             MaxGamersSession = 30;
+            CountGamers = ServerEmulator.GetRandomCountGemers();
         }
     }
 }

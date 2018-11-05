@@ -5,15 +5,50 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KursWpf"
       mc:Ignorable="d" 
-      d:DesignHeight="592.153" d:DesignWidth="800"
+      d:DesignHeight="668.242" d:DesignWidth="800"
       Title="PageGames">
 
-    <Grid Background="#FF282B3A" Margin="0,0,0,-60">
+    <Page.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="{Binding Path=ImgGame}" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="{Binding Path=Name}" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="10,0,5,0" Padding="0"/>
+                <Label Content="{Binding Path=CountGamers}" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+
+    <Grid Background="#FF282B3A">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="ИГРЫ УСТАНОВЛЕННЫЕ НА СЕРВЕРЕ" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414"/>
+        <ListBox x:Name="GamesList" ItemTemplate="{StaticResource listTemplate}" 
+               
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,38,0,0" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+            </ListBox.Resources>
+        </ListBox>
 
+
+
+
+
+
+
+
+
+        <!--
         <WrapPanel Margin="0,33,0,0">
             <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
                 <Image Height="230" Source="Image/PUBG.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
@@ -48,7 +83,7 @@
 
 
         </WrapPanel>
-
+-->
 
 
     </Grid>

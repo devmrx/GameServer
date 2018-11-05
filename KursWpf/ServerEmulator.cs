@@ -26,5 +26,10 @@ namespace KursWpf
         public static string GetRandomPassHash() {
             return _rand.Next(0, 40000).GetHashCode().ToString();
         }
+
+        public static int GetRandomCountGemers()
+        {
+            return _rand.Next(20, 401);
+        }
     }
 }

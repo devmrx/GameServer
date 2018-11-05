@@ -43,7 +43,7 @@ namespace KursWpf {
 
 
         private void BtnClickGamesPage(object sender, RoutedEventArgs e) {
-            Main.Content = new PageGames();
+            Main.Content = new PageGames(_server);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {

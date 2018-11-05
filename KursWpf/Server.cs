@@ -34,11 +34,13 @@ namespace KursWpf
             Games = new List<GameServer>
             {
                 new Chess(),
-                //new SeaBattle(),
+                new WOW(),
                 new CSGO(),
                 new PUBG(),
-                new Dota2()
+                new Dota2(),
+                new Overwatch()
             };
+            Games.Sort();
         }
 
         private void LoadAccounts() {
