@@ -1,0 +1,46 @@
+F:\Курсовой ООП\KursWpf\KursWpf\bin\Debug\KursWpf.exe.config
+F:\Курсовой ООП\KursWpf\KursWpf\bin\Debug\KursWpf.exe
+F:\Курсовой ООП\KursWpf\KursWpf\bin\Debug\KursWpf.pdb
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.csprojAssemblyReference.cache
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\MainWindow.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\App.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf_MarkupCompile.cache
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf_MarkupCompile.lref
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\MainWindow.baml
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.g.resources
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.Properties.Resources.resources
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.csproj.GenerateResource.cache
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.csproj.CoreCompileInputs.cache
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.exe
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\KursWpf.pdb
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageStatus.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageStatus.baml
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageGames.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageGames.baml
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageSettings.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageUsers.g.cs
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageSettings.baml
+F:\Курсовой ООП\KursWpf\KursWpf\obj\Debug\PageUsers.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\bin\Debug\KursWpf.exe.config
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\bin\Debug\KursWpf.exe
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\bin\Debug\KursWpf.pdb
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.csprojAssemblyReference.cache
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\MainWindow.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageGames.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageSettings.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageStatus.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageUsers.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\App.g.cs
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf_MarkupCompile.cache
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf_MarkupCompile.lref
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\MainWindow.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageGames.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageSettings.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageStatus.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\PageUsers.baml
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.g.resources
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.Properties.Resources.resources
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.csproj.GenerateResource.cache
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.csproj.CoreCompileInputs.cache
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.exe
+F:\Курсовой ООП\KursWpf 0.0.1\KursWpf\obj\Debug\KursWpf.pdb
