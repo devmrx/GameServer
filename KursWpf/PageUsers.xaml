@@ -12,18 +12,21 @@
     <Grid Background="#FF282B3A">
         <Label Content="ВСЕ ИГРОКИ НА СЕРВЕРЕ" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414" />
 
-        <ListBox x:Name="AccountList" Background="{x:Null}" Margin="0,52,0,0" >
-            <ListBox.ItemTemplate >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="AccountList" Background="{x:Null}" Margin="0,52,0,0" BorderThickness="0"  >
+            <ItemsControl.ItemTemplate >
                 <DataTemplate>
-
-                    <StackPanel Margin="5" HorizontalAlignment="Left" Orientation="Horizontal" >
+                    <DockPanel Margin="28,0,28,10"  Height="56" VerticalAlignment="Top" Background="#FF2E3144" Width="700" MaxWidth="1280" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
                         <!--<Image Width="100" Height="75" Source="{Binding Path=ImagePath}" />-->
-                        <TextBlock FontSize="16" Text="{Binding Path=Login}" HorizontalAlignment="Center" Foreground="#FFF9EFEF" Margin="20,0,0,0" />
-                        <TextBlock FontSize="16" Text="{Binding Path=GamerStatus}" HorizontalAlignment="Right" Margin="20,0,0,0" />
-                    </StackPanel>
+                        <TextBlock FontSize="16" Text="{Binding Path=Login}" HorizontalAlignment="Left" Foreground="#FFF9EFEF" Margin="26,17,0,0" VerticalAlignment="Top" />
+                        <TextBlock FontSize="16" Text="{Binding Path=GamerStatus}" HorizontalAlignment="Left" Margin="-193,17,0,0" VerticalAlignment="Top" Foreground="#FF9E8F8F" DockPanel.Dock="Right" />
+                        <Button Content="Забанить"  VerticalAlignment="Center" Width="93" Height="28" BorderBrush="#FF494D62" Background="{x:Null}" Foreground="#FFFDFBFB" Margin="0,14,28,14" HorizontalAlignment="Right" Cursor="Hand" />
+
+                    </DockPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
 
     </Grid>
 </Page>

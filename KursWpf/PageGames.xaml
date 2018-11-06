@@ -12,8 +12,8 @@
         <DataTemplate x:Key="listTemplate">
             <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
                 <Image Height="230" Source="{Binding Path=ImgGame}" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
-                <Label Content="{Binding Path=Name}" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="10,0,5,0" Padding="0"/>
-                <Label Content="{Binding Path=CountGamers}" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+                <Label Content="{Binding Path=ShortName}" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="10,0,5,0" Padding="0"/>
+                <Label Content="{Binding Path=CountGamersF}" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -24,21 +24,21 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="ИГРЫ УСТАНОВЛЕННЫЕ НА СЕРВЕРЕ" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414"/>
-        <ListBox x:Name="GamesList" ItemTemplate="{StaticResource listTemplate}" 
+        <ItemsControl x:Name="GamesList" ItemTemplate="{StaticResource listTemplate}" 
                
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,38,0,0" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" >
-            <ListBox.ItemsPanel>
+            <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.Resources>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
-            </ListBox.Resources>
-        </ListBox>
+            </ItemsControl.Resources>
+        </ItemsControl>
 
 
 

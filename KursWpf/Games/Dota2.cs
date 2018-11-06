@@ -14,6 +14,7 @@ namespace KursWpf.Games
             ImgGame = "Image/Dota2.jpg";
             MaxGamersSession = 10;
             CountGamers = ServerEmulator.GetRandomCountGemers();
+            CountGamersF = GetCountPlayersFormat(CountGamers);
         }
     }
 }

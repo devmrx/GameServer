@@ -14,6 +14,7 @@ namespace KursWpf.Games
             ImgGame = "Image/World of Warships.jpg";
             MaxGamersSession = 30;
             CountGamers = ServerEmulator.GetRandomCountGemers();
+            CountGamersF = GetCountPlayersFormat(CountGamers);
         }
     }
 }

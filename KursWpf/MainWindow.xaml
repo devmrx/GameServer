@@ -20,11 +20,11 @@
 
             </StackPanel>
         </DockPanel>
-        <Button Content="Статус" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="BtnClickStatusPage"/>
-        <Button Content="Игры" HorizontalAlignment="Left" Margin="0,127,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="BtnClickGamesPage"/>
-        <Button Content="Пользователи" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="Button_Click"/>
-        <Button Content="Настройки" Margin="0,233,0,0" VerticalAlignment="Top" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" HorizontalAlignment="Left" Width="216" Click="Button_Click_1"/>
-        <Button Content="О сервере" HorizontalAlignment="Left" Margin="0,286,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144"/>
+        <Button Content="Статус" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="BtnClickStatusPage" BorderBrush="#FF494D62"/>
+        <Button Content="Игры" HorizontalAlignment="Left" Margin="0,127,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="BtnClickGamesPage" BorderBrush="#FF494D62"/>
+        <Button Content="Пользователи" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" Click="Button_Click" BorderBrush="#FF494D62"/>
+        <Button Content="Настройки" Margin="0,233,0,0" VerticalAlignment="Top" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" HorizontalAlignment="Left" Width="216" Click="Button_Click_1" BorderBrush="#FF494D62"/>
+        <Button Content="О сервере" HorizontalAlignment="Left" Margin="0,286,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" Background="#FF2E3144" BorderBrush="#FF494D62"/>
         <Frame x:Name="Main" RenderTransformOrigin="0.5,0.5" Margin="216,74,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden">
             <Frame.RenderTransform>
                 <TransformGroup>
