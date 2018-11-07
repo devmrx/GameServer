@@ -76,6 +76,9 @@ namespace KursWpf
 
         public void Start() {
             _serverWork = true;
+            // Load games and players
+
+
         }
 
         //public void Restart();
@@ -98,7 +101,7 @@ namespace KursWpf
         public virtual string Status() {
             //var gc = GC.GetTotalMemory(false);
             return (GC.GetTotalMemory(false) / (int)Math.Pow(1024, 2) + " MB");
-            //Console.WriteLine(_serverWork ? "Сервер запущен" : "Сервер выключен");
+            //_serverWork ? "Сервер запущен" : "Сервер выключен";
 
         }
 

@@ -22,6 +22,7 @@ namespace KursWpf {
     public partial class MainWindow : Window
     {
         private Server _server;
+        private PageStatus pageStatus;
 
         public MainWindow() {
 
@@ -37,7 +38,10 @@ namespace KursWpf {
         }
 
         private void BtnClickStatusPage(object sender, RoutedEventArgs e) {
-            Main.Content = new PageStatus();
+
+            if(pageStatus == null) pageStatus = new PageStatus();
+
+            Main.Content = pageStatus;
         }
 
 
