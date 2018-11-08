@@ -41,13 +41,23 @@ namespace KursWpf
 
         private void SelectGame()
         {
-            while (QueueActiveAccount.Count != 0)
+            if (QueueActiveAccount.Count != 0)
             {
-                Account gamer = QueueActiveAccount.Dequeue();
-                Games[ServerEmulator.GetRandomIndxGame(Games.Count)].AddGamer(gamer);
-            }
+                while (QueueActiveAccount.Count != 0 && Games.Count != 0) {
+                    Account gamer = QueueActiveAccount.Dequeue();
+                    Games[ServerEmulator.GetRandomIndxGame(Games.Count)].AddGamer(gamer);
+                }
 
+                foreach (var game in Games) {
+                    game.GetCountPlayersFormat();
+                }
+                Games.Sort();
+            }
+            
         }
+
+
+        
 
         public void SetWorkerM(PrintWorkProcess worker) {
             WriteLog += worker;
@@ -63,7 +73,7 @@ namespace KursWpf
                 new Dota2(),
                 new Overwatch()
             };
-            Games.Sort();
+            //Games.Sort();
 
           
         }
@@ -102,7 +112,8 @@ namespace KursWpf
         public void Start() {
             _serverWork = true;
             // Load games and players
-
+            SelectActiveAccounts();
+            SelectGame();
 
         }
 

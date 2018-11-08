@@ -14,7 +14,7 @@ namespace KursWpf.Games
             ImgGame = "Image/Chess.jpg";
             MaxGamersSession = 2;
             CountGamers = ServerEmulator.GetRandomCountGemers();
-            CountGamersF = GetCountPlayersFormat(CountGamers);
+            //CountGamersF = GetCountPlayersFormat(CountGamers);
         }
 
         private void CreateSession() {

@@ -22,7 +22,10 @@ namespace KursWpf {
     /// <summary>
     /// Логика взаимодействия для PageStatus.xaml
     /// </summary>
-    public partial class PageStatus : Page, INotifyPropertyChanged {
+    public partial class PageStatus : Page, INotifyPropertyChanged
+    {
+
+        private Server _server;
 
         private double _lastLecture;
         private double _trend;
@@ -31,8 +34,10 @@ namespace KursWpf {
         public event PropertyChangedEventHandler PropertyChanged;
         public Func<ChartPoint, string> PointLabel { get; set; }
 
-        public PageStatus() {
+        public PageStatus(Server server) {
             InitializeComponent();
+
+            _server = server;
 
             LastHourSeries = new SeriesCollection
             {
@@ -103,7 +108,8 @@ namespace KursWpf {
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
 
-            
+            _server.Start();
+
             Task.Run(() => {
                 var r = new Random();
                 while (true) {

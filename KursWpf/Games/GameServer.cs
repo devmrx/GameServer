@@ -10,7 +10,7 @@ namespace KursWpf.Games
 
         public string Name { get; set; }
         public string ImgGame { get; set; }
-        public string TypeGame { get; set; } // ENUM 
+        //public string TypeGame { get; set; } // ENUM 
         public string ShortName { get; set; }
         public int CountGamers { get; set; }
         public string CountGamersF { get; set; }
@@ -18,11 +18,11 @@ namespace KursWpf.Games
         protected byte MaxGamersSession { get; set; }
         protected string Description { get; set; }
 
-        private Queue<Account> _queueGamers;
+        public List<Account> _listGamers;
 
         public GameServer()
         {
-            _queueGamers = new Queue<Account>();
+            _listGamers = new List<Account>();
         }
 
         public int CompareTo(GameServer other)
@@ -45,26 +45,31 @@ namespace KursWpf.Games
         //8 игроков
         //9 игроков
 
-        public string GetCountPlayersFormat(int count)
+        public void GetCountPlayersFormat()
         {
+            CountGamers = _listGamers.Count;
+            int count = CountGamers;
             int lastdigit = Int32.Parse(count.ToString().Last().ToString());
 
             switch (lastdigit)
             {
                 case 1:
-                    return count + " игрок онлайн";
+                    CountGamersF = count + " игрок онлайн";
+                    break;
                 case 2:
                 case 3:
                 case 4:
-                    return count + " игрока онлайн";
+                    CountGamersF = count + " игрока онлайн";
+                    break;
                 default:
-                    return count + " игроков онлайн";
+                    CountGamersF = count + " игроков онлайн";
+                    break;
             }
         }
 
         public void AddGamer(Account account)
         {
-            _queueGamers.Enqueue(account);
+            _listGamers.Add(account);
         }
 
 

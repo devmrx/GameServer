@@ -14,7 +14,7 @@ namespace KursWpf.Games
             ImgGame = "Image/PUBG.jpg";
             MaxGamersSession = 100;
             CountGamers = ServerEmulator.GetRandomCountGemers();
-            CountGamersF = GetCountPlayersFormat(CountGamers);
+            //CountGamersF = GetCountPlayersFormat(CountGamers);
         }
 
     }

@@ -15,7 +15,7 @@ namespace KursWpf.Games
             ImgGame = "Image/CounterStrikeGO.jpg";
             MaxGamersSession = 10;
             CountGamers = ServerEmulator.GetRandomCountGemers();
-            CountGamersF = GetCountPlayersFormat(CountGamers);
+            //CountGamersF = GetCountPlayersFormat(CountGamers);
         }
     }
 }

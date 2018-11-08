@@ -39,7 +39,7 @@ namespace KursWpf {
 
         private void BtnClickStatusPage(object sender, RoutedEventArgs e) {
 
-            if(pageStatus == null) pageStatus = new PageStatus();
+            if(pageStatus == null) pageStatus = new PageStatus(_server);
 
             Main.Content = pageStatus;
         }
