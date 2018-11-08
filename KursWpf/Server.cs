@@ -11,10 +11,12 @@ namespace KursWpf
     {
         public string Ip { get; private set; }
         public string HostName { get; private set; }
-        private bool _serverWork = false;
+        public bool _serverWork = false;
 
         public List<GameServer> Games { get; set; }
         public List<Account> Accounts { get; set; }
+
+        private Queue<Account> QueueActiveAccount;
 
         public delegate void PrintWorkProcess(string operation);
         private PrintWorkProcess WriteLog;
@@ -24,6 +26,27 @@ namespace KursWpf
 
             LoadGames();
             LoadAccounts();
+
+            QueueActiveAccount = new Queue<Account>();
+        }
+
+        private void SelectActiveAccounts()
+        {
+            foreach (Gamer account in Accounts)
+            {
+                if(account.GamerStatus == KursWpf.Status.Online)
+                    QueueActiveAccount.Enqueue(account);
+            }
+        }
+
+        private void SelectGame()
+        {
+            while (QueueActiveAccount.Count != 0)
+            {
+                Account gamer = QueueActiveAccount.Dequeue();
+                Games[ServerEmulator.GetRandomIndxGame(Games.Count)].AddGamer(gamer);
+            }
+
         }
 
         public void SetWorkerM(PrintWorkProcess worker) {
@@ -41,6 +64,8 @@ namespace KursWpf
                 new Overwatch()
             };
             Games.Sort();
+
+          
         }
 
         private void LoadAccounts() {

@@ -18,6 +18,13 @@ namespace KursWpf.Games
         protected byte MaxGamersSession { get; set; }
         protected string Description { get; set; }
 
+        private Queue<Account> _queueGamers;
+
+        public GameServer()
+        {
+            _queueGamers = new Queue<Account>();
+        }
+
         public int CompareTo(GameServer other)
         {
             if (CountGamers > other.CountGamers) return -1;
@@ -55,6 +62,10 @@ namespace KursWpf.Games
             }
         }
 
+        public void AddGamer(Account account)
+        {
+            _queueGamers.Enqueue(account);
+        }
 
 
         // link to collection gamers

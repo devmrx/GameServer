@@ -31,5 +31,10 @@ namespace KursWpf
         {
             return _rand.Next(20, 401);
         }
+
+        public static int GetRandomIndxGame(int countGames)
+        {
+            return _rand.Next(0, countGames);
+        }
     }
 }

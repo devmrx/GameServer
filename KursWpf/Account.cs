@@ -8,6 +8,7 @@ namespace KursWpf
 {
     public class Account
     {
+        public int Id { get; set; }
         public string Login { get; set; }
         private string PasswordHash { get; set; }
 

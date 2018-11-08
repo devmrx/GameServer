@@ -64,8 +64,7 @@ namespace KursWpf {
             };
             _trend = 8;
 
-            PointLabel = chartPoint =>
-                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
             DataContext = this;
         }
@@ -99,15 +98,12 @@ namespace KursWpf {
 
 
         protected virtual void OnPropertyChanged(string propertyName = null) {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
 
             
-
-
             Task.Run(() => {
                 var r = new Random();
                 while (true) {
@@ -123,13 +119,10 @@ namespace KursWpf {
 
 
 
-            PointLabel = chartPoint =>
-                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
+            //PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
 
             DataContext = this;
-
         }
 
 
