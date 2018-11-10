@@ -15,9 +15,9 @@
         <lvc:CartesianChart Series="{Binding LastHourSeries}" Margin="36,102,0,0" Height="253" VerticalAlignment="Top" HorizontalAlignment="Left" Width="419" />
 
 
-        <Button Content="Запустить" HorizontalAlignment="Left" Margin="21,583,0,0" VerticalAlignment="Top" Width="131" Height="38" Background="#FF5936AD" Foreground="#FFFDFCFC" FontSize="18" FontFamily="Bahnschrift Light" Click="ButtonStart_Click" />
-        <Button Content="Остановить" HorizontalAlignment="Left" Margin="172,583,0,0" VerticalAlignment="Top" Width="131" Height="38" Background="#FF5936AD" Foreground="#FFFDFCFC" FontSize="18" FontFamily="Bahnschrift Light" />
-        <Button Content="Перезагрузить" HorizontalAlignment="Left" Margin="324,583,0,0" VerticalAlignment="Top" Width="131" Height="38" Background="#FF5936AD" Foreground="#FFFDFCFC" FontSize="18" FontFamily="Bahnschrift Light" />
+        <Button Content="Запустить" Style="{StaticResource ButtonStyle}" Margin="21,583,0,0"  Click="ButtonStart_Click"  />
+        <Button Content="Остановить" Style="{StaticResource ButtonStyle}" Margin="172,583,0,0" />
+        <Button Content="Перезагрузить" Style="{StaticResource ButtonStyle}" Margin="322,583,0,0" />
         <Label Content="Память (ОЗУ)" HorizontalAlignment="Left" Margin="62,66,0,0" VerticalAlignment="Top" Foreground="#FFF9F5F5" FontSize="18"/>
         <Label Content="Количество игроков на сервере: 341" HorizontalAlignment="Left" Margin="50,385,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
         <Label Content="Количество игровых сессий в текущий момент: 124" HorizontalAlignment="Left" Margin="50,443,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>

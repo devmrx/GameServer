@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursWpf
 {
-    class LogWriter
+    public class LogWriter
     {
         private static LogWriter _logWriter;
 

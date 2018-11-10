@@ -24,7 +24,6 @@ namespace KursWpf {
     /// </summary>
     public partial class PageStatus : Page, INotifyPropertyChanged
     {
-
         private Server _server;
 
         private double _lastLecture;
@@ -108,27 +107,28 @@ namespace KursWpf {
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
 
-            _server.Start();
 
-            Task.Run(() => {
-                var r = new Random();
-                while (true) {
-                    Thread.Sleep(500);
-                    _trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
-                    Application.Current.Dispatcher.Invoke(() => {
-                        LastHourSeries[0].Values.Add(new ObservableValue(_trend));
-                        LastHourSeries[0].Values.RemoveAt(0);
-                        SetLecture();
-                    });
-                }
-            });
+            if (!_server._serverWork)
+            {
+                _server.Start();
 
+                Task.Run(() => {
+                    var r = new Random();
+                    while (true) {
+                        Thread.Sleep(500);
+                        _trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
+                        Application.Current.Dispatcher.Invoke(() => {
+                            LastHourSeries[0].Values.Add(new ObservableValue(_trend));
+                            LastHourSeries[0].Values.RemoveAt(0);
+                            SetLecture();
+                        });
+                    }
+                });
 
+                //PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
-            //PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
-
-
-            DataContext = this;
+                DataContext = this;
+            }
         }
 
 

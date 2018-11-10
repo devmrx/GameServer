@@ -74,3 +74,4 @@ F:\Курсовой ООП\KursWpf 0.0.1\GameServer\KursWpf\bin\Debug\LiveCharts
 F:\Курсовой ООП\KursWpf 0.0.1\GameServer\KursWpf\bin\Debug\LiveCharts.Wpf.pdb
 F:\Курсовой ООП\KursWpf 0.0.1\GameServer\KursWpf\bin\Debug\LiveCharts.Wpf.xml
 F:\Курсовой ООП\KursWpf 0.0.1\GameServer\KursWpf\obj\Debug\KursWpf.csproj.CopyComplete
+F:\Курсовой ООП\KursWpf 0.0.1\GameServer\KursWpf\obj\Debug\App.baml

@@ -14,11 +14,11 @@ namespace KursWpf.Games
         public string ShortName { get; set; }
         public int CountGamers { get; set; }
         public string CountGamersF { get; set; }
-        //protected int GamersOnline { get; set; }
         protected byte MaxGamersSession { get; set; }
         protected string Description { get; set; }
 
         public List<Account> _listGamers;
+        private List<GameSession> GameSessions;
 
         public GameServer()
         {
@@ -32,18 +32,25 @@ namespace KursWpf.Games
             else return 0;
         }
 
-        //156 игроков онлайн
 
-        //0 игроков
-        //1 игрок
-        //2 игрока
-        //3 игрока
-        //4 игрока
-        //5 игроков
-        //6 игроков
-        //7 игроков
-        //8 игроков
-        //9 игроков
+        // ....
+        protected void CreateSessions()
+        {
+            if (GameSessions == null)
+            {
+                GameSessions = new List<GameSession>();
+            }
+
+            foreach (var gamer in _listGamers)
+            {
+                if (GameSessions.Count == 0)
+                {
+                    //GameSession newSession = new GameSession();
+                }
+            }
+
+
+        }
 
         public void GetCountPlayersFormat()
         {
@@ -72,10 +79,16 @@ namespace KursWpf.Games
             _listGamers.Add(account);
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
 
-        // link to collection gamers
 
-        //public abstract void GetInfo();
+        //public virtual string GetInfo()
+        //{
+            
+        //}
 
 
     }

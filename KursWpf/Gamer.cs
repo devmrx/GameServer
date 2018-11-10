@@ -16,8 +16,12 @@ namespace KursWpf
             GamerStatus = Status.Offline;
         }
 
+        public override void Play()
+        {
 
-
+            GamerStatus = Status.Playing;
+            //
+        }
 
     }
 
@@ -27,4 +31,7 @@ namespace KursWpf
         Search,
         Playing
     }
+
+   
+
 }

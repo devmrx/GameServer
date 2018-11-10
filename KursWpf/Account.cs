@@ -22,5 +22,9 @@ namespace KursWpf
             PasswordHash = passwordHash;
         }
 
+        public virtual void Play()
+        {
+            
+        }
     }
 }
