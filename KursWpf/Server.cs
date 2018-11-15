@@ -110,13 +110,25 @@ namespace KursWpf
             ServerEmulator.GetRandomStatus(Accounts);
         }
 
-        public void Start() {
+        public void Start()
+        {
+            WriteLog("Запуск игрового сервера");
 
             if (!_serverWork) {
                 _serverWork = true;
                 // Load games and players
                 SelectActiveAccounts();
                 SelectGame();
+
+                StartGame();
+            }
+        }
+
+        public void StartGame()
+        {
+            foreach (var game in Games)
+            {
+                game.CreateSessions();
             }
         }
 

@@ -8,9 +8,11 @@ namespace KursWpf.Games
 {
     class GameSession {
 
-        private int MaxCountGamers { get; set; }
+        public int MaxCountGamers { get; set; }
         public List<Gamer> GamersPlay; // id
         public DateTime _sessionTime;
+
+
 
         public GameSession(int maxCountGamers, DateTime sessionTime) {
             MaxCountGamers = maxCountGamers;

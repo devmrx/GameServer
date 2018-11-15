@@ -20,7 +20,7 @@ namespace KursWpf.Games
         public List<Account> _listGamers;
         private List<GameSession> GameSessions;
 
-        public GameServer()
+        protected GameServer()
         {
             _listGamers = new List<Account>();
         }
@@ -34,20 +34,31 @@ namespace KursWpf.Games
 
 
         // ....
-        protected void CreateSessions()
+        public void CreateSessions()
         {
+            GameSession gameSession = new GameSession(MaxGamersSession, new DateTime().AddMinutes(15)); // Продолжительность игровой сессии
+
             if (GameSessions == null)
             {
                 GameSessions = new List<GameSession>();
+
             }
 
-            foreach (var gamer in _listGamers)
+            for (int i = 0; i < _listGamers.Count; i++)
             {
-                if (GameSessions.Count == 0)
-                {
-                    //GameSession newSession = new GameSession();
+                if (gameSession.GamersPlay.Count <= gameSession.MaxCountGamers) {
+                    gameSession.GamersPlay.Add((Gamer)_listGamers[i]);
+
+                    if(i == (_listGamers.Count-1)) GameSessions.Add(gameSession);
+                } else {
+                    GameSessions.Add(gameSession);
+
+                    gameSession = new GameSession(MaxGamersSession, new DateTime().AddMinutes(15));
                 }
             }
+
+
+            
 
 
         }

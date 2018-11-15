@@ -25,6 +25,7 @@ namespace KursWpf {
     public partial class PageStatus : Page, INotifyPropertyChanged
     {
         private Server _server;
+        private ManualResetEvent _resetEvent = new ManualResetEvent(false);
 
         private double _lastLecture;
         private double _trend;
@@ -71,13 +72,27 @@ namespace KursWpf {
             PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
             DataContext = this;
+
+            Task.Run(() => {
+                var r = new Random();
+                while (true) {
+                    _resetEvent.WaitOne();
+                    Thread.Sleep(500);
+                    _trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
+                    Application.Current.Dispatcher.Invoke(() => {
+                        LastHourSeries[0].Values.Add(new ObservableValue(_trend));
+                        LastHourSeries[0].Values.RemoveAt(0);
+                        SetLecture();
+                    });
+                }
+            });
         }
 
 
         public SeriesCollection LastHourSeries { get; set; }
 
         public double LastLecture {
-            get { return _lastLecture; }
+            get => _lastLecture;
             set {
                 _lastLecture = value;
                 OnPropertyChanged("LastLecture");
@@ -111,27 +126,24 @@ namespace KursWpf {
             if (!_server._serverWork)
             {
                 _server.Start();
-
-                Task.Run(() => {
-                    var r = new Random();
-                    while (true) {
-                        Thread.Sleep(500);
-                        _trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
-                        Application.Current.Dispatcher.Invoke(() => {
-                            LastHourSeries[0].Values.Add(new ObservableValue(_trend));
-                            LastHourSeries[0].Values.RemoveAt(0);
-                            SetLecture();
-                        });
-                    }
-                });
+                _resetEvent.Set();
 
                 //PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
-                DataContext = this;
+                //DataContext = this;
             }
         }
 
+        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
 
+
+            if (_server._serverWork) {
+                _server.Stop();
+
+                _resetEvent.Reset();
+
+            }
+        }
 
     }
 }

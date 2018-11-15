@@ -29,7 +29,7 @@ namespace KursWpf {
             InitializeComponent();
 
             _server = new Server();
-           
+            _server.SetWorkerM(LogWriter.GetInst().WriteFileL);
            
         }
 

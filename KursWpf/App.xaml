@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:KursWpf"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             Startup="App_Startup">
     <Application.Resources>
         <Style TargetType="{x:Type Button}" x:Key="ButtonStyle">
             <Setter Property="Background" Value="#FF5936AD"/>
@@ -45,6 +46,7 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FF2b2f40"/>
+                    <Setter Property="Foreground" Value="#FFB68FFF" />
                     <Setter Property="Cursor" Value="Hand"></Setter>
                 </Trigger>
             </Style.Triggers>
