@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -120,6 +121,13 @@ namespace KursWpf {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //[DllImport("Kernel32")]
+        //public static extern void AllocConsole();
+
+        //[DllImport("Kernel32")]
+        //public static extern void FreeConsole();
+
+
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
 
 
@@ -127,6 +135,10 @@ namespace KursWpf {
             {
                 _server.Start();
                 _resetEvent.Set();
+
+               // AllocConsole();
+                //Console.WriteLine("test");
+
 
                 //PointLabel = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})";
 
@@ -141,7 +153,7 @@ namespace KursWpf {
                 _server.Stop();
 
                 _resetEvent.Reset();
-
+                //FreeConsole();
             }
         }
 

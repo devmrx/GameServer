@@ -28,6 +28,8 @@ namespace KursWpf
         {
             InitializeComponent();
             _server = server;
+
+            if(_server.Accounts == null) return;
             accounts = new ObservableCollection<Account>(_server.Accounts);
             //AccountList.ItemsSource = accounts;
             AccountList.ItemsSource = _server.Accounts;

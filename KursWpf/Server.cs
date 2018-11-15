@@ -21,18 +21,20 @@ namespace KursWpf
         public delegate void PrintWorkProcess(string operation);
         private PrintWorkProcess WriteLog;
 
+        public void SetWorkerM(PrintWorkProcess worker) {
+            WriteLog += worker;
+        }
+
         public Server() {
             Ip = ServerConfig.Ip;
-
-            // Start
-            LoadGames(); 
-            LoadAccounts();
 
             QueueActiveAccount = new Queue<Account>();
         }
 
         private void SelectActiveAccounts()
         {
+            WriteLog("Добавление игроков со статусом онлайн в очередь");
+
             foreach (Gamer account in Accounts)
             {
                 if(account.GamerStatus == KursWpf.Status.Online)
@@ -42,6 +44,8 @@ namespace KursWpf
 
         private void SelectGame()
         {
+            WriteLog("Распределение игроков с очереди по играм");
+
             if (QueueActiveAccount.Count != 0)
             {
                 while (QueueActiveAccount.Count != 0 && Games.Count != 0) {
@@ -53,18 +57,15 @@ namespace KursWpf
                     game.GetCountPlayersFormat();
                 }
                 Games.Sort();
-            }
-            
+            }         
         }
 
 
-        
-
-        public void SetWorkerM(PrintWorkProcess worker) {
-            WriteLog += worker;
-        }
 
         private void LoadGames() {
+
+            WriteLog("Загрузка игр");
+
             Games = new List<GameServer>
             {
                 new Chess(),
@@ -81,6 +82,8 @@ namespace KursWpf
 
         private void LoadAccounts() {
             // DB
+            WriteLog("Загрузка пользователей");
+
             Accounts = new List<Account>
             {
                 new Gamer("Milena", ServerEmulator.GetRandomPassHash()),
@@ -117,6 +120,10 @@ namespace KursWpf
             if (!_serverWork) {
                 _serverWork = true;
                 // Load games and players
+                // Start
+                LoadGames();
+                LoadAccounts();
+
                 SelectActiveAccounts();
                 SelectGame();
 
@@ -135,18 +142,20 @@ namespace KursWpf
         //public void Restart();
 
         public void Stop() {
+
+            WriteLog("Выключение игрового сервера");
             _serverWork = false;
         }
 
-        public void GetListGames() {
-            Console.WriteLine();
-            Console.WriteLine("Игры установленные на сервере:");
-            foreach (var game in Games) {
-                Console.WriteLine(game.Name);
-            }
+        //public void GetListGames() {
+        //    Console.WriteLine();
+        //    Console.WriteLine("Игры установленные на сервере:");
+        //    foreach (var game in Games) {
+        //        Console.WriteLine(game.Name);
+        //    }
 
-            Console.WriteLine();
-        }
+        //    Console.WriteLine();
+        //}
 
 
         public string Status() {
