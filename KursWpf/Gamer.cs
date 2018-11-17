@@ -10,7 +10,7 @@ namespace KursWpf
     public class Gamer : Account {
 
         public Status GamerStatus { get; set; }
-        public List<GameServer> Games { get; set; }
+        //public List<GameServer> Games { get; set; }
 
         public Gamer(string login, string passwordHash) : base(login, passwordHash) {
             GamerStatus = Status.Offline;
@@ -22,7 +22,6 @@ namespace KursWpf
             GamerStatus = Status.Playing;
             //
         }
-
     }
 
     public enum Status : byte {

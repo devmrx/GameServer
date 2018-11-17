@@ -13,8 +13,8 @@ namespace KursWpf.Games
         //public string TypeGame { get; set; } // ENUM 
         public string ShortName { get; set; }
         public int CountGamers { get; set; }
-        public string CountGamersF { get; set; }
-        protected byte MaxGamersSession { get; set; }
+        public string CountGamersF { get; protected set; }
+        protected byte MaxGamersSession { get;  set; } 
         protected string Description { get; set; }
 
         public List<Account> _listGamers;
@@ -23,6 +23,7 @@ namespace KursWpf.Games
         protected GameServer()
         {
             _listGamers = new List<Account>();
+            
         }
 
         public int CompareTo(GameServer other)
@@ -30,18 +31,19 @@ namespace KursWpf.Games
             if (CountGamers > other.CountGamers) return -1;
             else if (CountGamers < other.CountGamers) return 1;
             else return 0;
+
+            
         }
 
 
-        // ....
+        // .... maybe set virtual
         public void CreateSessions()
         {
-            GameSession gameSession = new GameSession(MaxGamersSession, new DateTime().AddMinutes(15)); // Продолжительность игровой сессии
+            GameSession gameSession = new GameSession(MaxGamersSession, DateTime.Now.AddMinutes(15)); // Продолжительность игровой сессии
 
             if (GameSessions == null)
             {
                 GameSessions = new List<GameSession>();
-
             }
 
             for (int i = 0; i < _listGamers.Count; i++)
@@ -56,11 +58,6 @@ namespace KursWpf.Games
                     gameSession = new GameSession(MaxGamersSession, new DateTime().AddMinutes(15));
                 }
             }
-
-
-            
-
-
         }
 
         public void GetCountPlayersFormat()
@@ -95,6 +92,10 @@ namespace KursWpf.Games
             return Name;
         }
 
+        public virtual void StartGame()
+        {
+
+        }
 
         //public virtual string GetInfo()
         //{

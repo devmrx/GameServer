@@ -59,6 +59,9 @@ namespace KursWpf {
             Main.Content = new PageSettings();
         }
 
+        private void Window_Closed(object sender, EventArgs e) {
 
+            LogWriter.GetInst().Dispose();
+        }
     }
 }

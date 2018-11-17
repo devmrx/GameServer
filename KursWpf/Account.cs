@@ -11,6 +11,7 @@ namespace KursWpf
         public int Id { get; set; }
         public string Login { get; set; }
         private string PasswordHash { get; set; }
+        private string Email { get; set; }
 
         public bool IsBanned { get; set; } = false;
 

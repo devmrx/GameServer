@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using KursWpf.Games;
@@ -21,19 +23,31 @@ namespace KursWpf
         public delegate void PrintWorkProcess(string operation);
         private PrintWorkProcess WriteLog;
 
-        public void SetWorkerM(PrintWorkProcess worker) {
+
+        public void SetWorkerM(PrintWorkProcess worker) 
+        {
             WriteLog += worker;
         }
 
-        public Server() {
-            Ip = ServerConfig.Ip;
 
+        public Server() 
+        {
+            Ip = ServerConfig.Ip;
             QueueActiveAccount = new Queue<Account>();
+        }
+
+        public void SaveLog(string action)
+        {
+            if (WriteLog != null && ServerConfig.LogActivate)
+            {
+                WriteLog(action);
+            }
+
         }
 
         private void SelectActiveAccounts()
         {
-            WriteLog("Добавление игроков со статусом онлайн в очередь");
+            SaveLog("Добавление игроков со статусом онлайн в очередь");
 
             foreach (Gamer account in Accounts)
             {
@@ -42,9 +56,10 @@ namespace KursWpf
             }
         }
 
+
         private void SelectGame()
         {
-            WriteLog("Распределение игроков с очереди по играм");
+            SaveLog("Распределение игроков в очереди по играм");
 
             if (QueueActiveAccount.Count != 0)
             {
@@ -64,7 +79,7 @@ namespace KursWpf
 
         private void LoadGames() {
 
-            WriteLog("Загрузка игр");
+            SaveLog("Загрузка игр");
 
             Games = new List<GameServer>
             {
@@ -82,7 +97,7 @@ namespace KursWpf
 
         private void LoadAccounts() {
             // DB
-            WriteLog("Загрузка пользователей");
+            SaveLog("Загрузка пользователей");
 
             Accounts = new List<Account>
             {
@@ -115,7 +130,7 @@ namespace KursWpf
 
         public void Start()
         {
-            WriteLog("Запуск игрового сервера");
+            SaveLog("Запуск игрового сервера");
 
             if (!_serverWork) {
                 _serverWork = true;
@@ -143,7 +158,7 @@ namespace KursWpf
 
         public void Stop() {
 
-            WriteLog("Выключение игрового сервера");
+            SaveLog("Выключение игрового сервера");
             _serverWork = false;
         }
 
@@ -156,6 +171,36 @@ namespace KursWpf
 
         //    Console.WriteLine();
         //}
+
+
+        // TODO: Доработать метоы сериализации
+
+        public void SerializeSessionsGames()
+        {
+            
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            
+
+            using (FileStream fs = new FileStream("sessions.dat", FileMode.OpenOrCreate)) {
+                formatter.Serialize(fs, Games);
+
+                //Console.WriteLine("Объект сериализован");
+            }
+
+        }
+
+        public void DeserializeSessionsGames()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (FileStream fs = new FileStream("sessions.dat", FileMode.OpenOrCreate)) {
+                List<GameServer> newPerson = (List<GameServer>)formatter.Deserialize(fs);
+
+                //Console.WriteLine("Объект десериализован");
+                
+            }
+        }
 
 
         public string Status() {

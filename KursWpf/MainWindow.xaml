@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KursWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="757.061" Width="1001.81" Background="#282B3A" Foreground="Blue" MinWidth="800">
+        Title="MainWindow" Height="757.061" Width="1001.81" Background="#282B3A" Foreground="Blue" MinWidth="800" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
