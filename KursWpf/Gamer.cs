@@ -7,12 +7,13 @@ using KursWpf.Games;
 
 namespace KursWpf
 {
+    [Serializable]
     public class Gamer : Account {
 
         public Status GamerStatus { get; set; }
         //public List<GameServer> Games { get; set; }
 
-        public Gamer(string login, string passwordHash) : base(login, passwordHash) {
+        public Gamer(int id, string login, string passwordHash) : base(id, login, passwordHash) {
             GamerStatus = Status.Offline;
         }
 

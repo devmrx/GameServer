@@ -22,6 +22,7 @@ namespace KursWpf
 
         public delegate void PrintWorkProcess(string operation);
         private PrintWorkProcess WriteLog;
+        public Func<string, bool> QuestionOutput;
 
 
         public void SetWorkerM(PrintWorkProcess worker) 
@@ -101,32 +102,34 @@ namespace KursWpf
 
             Accounts = new List<Account>
             {
-                new Gamer("Milena", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Dima", ServerEmulator.GetRandomPassHash()),
-                new Gamer("darkness", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Viktor", ServerEmulator.GetRandomPassHash()),
-                new Gamer("IronMan", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Rabbit", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Samurai", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Fox", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Dog12", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Stark", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Antoni", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Halk", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Marshmallow", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Nagibator228", ServerEmulator.GetRandomPassHash()),
-                new Gamer("volk", ServerEmulator.GetRandomPassHash()),
-                new Gamer("zoro", ServerEmulator.GetRandomPassHash()),
-                new Gamer("stalker", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Rock123", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Linda", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Sniper", ServerEmulator.GetRandomPassHash()),
-                new Gamer("Viper", ServerEmulator.GetRandomPassHash()),
-                new Gamer("mistic", ServerEmulator.GetRandomPassHash()),
+                new Gamer(0, "Milena", ServerEmulator.GetRandomPassHash()),
+                new Gamer(1, "Dima", ServerEmulator.GetRandomPassHash()),
+                new Gamer(2, "darkness", ServerEmulator.GetRandomPassHash()),
+                new Gamer(3, "Viktor", ServerEmulator.GetRandomPassHash()),
+                new Gamer(4, "IronMan", ServerEmulator.GetRandomPassHash()),
+                new Gamer(5, "Rabbit", ServerEmulator.GetRandomPassHash()),
+                new Gamer(6, "Samurai", ServerEmulator.GetRandomPassHash()),
+                new Gamer(7, "Fox", ServerEmulator.GetRandomPassHash()),
+                new Gamer(8, "Dog12", ServerEmulator.GetRandomPassHash()),
+                new Gamer(9, "Stark", ServerEmulator.GetRandomPassHash()),
+                new Gamer(10, "Antoni", ServerEmulator.GetRandomPassHash()),
+                new Gamer(11, "Halk", ServerEmulator.GetRandomPassHash()),
+                new Gamer(12, "Marshmallow", ServerEmulator.GetRandomPassHash()),
+                new Gamer(13, "Nagibator228", ServerEmulator.GetRandomPassHash()),
+                new Gamer(14, "volk", ServerEmulator.GetRandomPassHash()),
+                new Gamer(15, "zoro", ServerEmulator.GetRandomPassHash()),
+                new Gamer(16, "stalker", ServerEmulator.GetRandomPassHash()),
+                new Gamer(17, "Rock123", ServerEmulator.GetRandomPassHash()),
+                new Gamer(18, "Linda", ServerEmulator.GetRandomPassHash()),
+                new Gamer(19, "Sniper", ServerEmulator.GetRandomPassHash()),
+                new Gamer(20, "Viper", ServerEmulator.GetRandomPassHash()),
+                new Gamer(21, "mistic", ServerEmulator.GetRandomPassHash()),
             };
 
-            ServerEmulator.GetRandomStatus(Accounts);
+            
         }
+
+        
 
         public void Start()
         {
@@ -134,10 +137,23 @@ namespace KursWpf
 
             if (!_serverWork) {
                 _serverWork = true;
+
+                if (File.Exists("sessions.dat") 
+                    && QuestionOutput != null 
+                    && QuestionOutput("Найдена сохраненная сессия!\r\n Хотите её восстановить?"))
+                {
+                    DeserializeSessionsGames();
+
+                    return;
+                }
+
+
                 // Load games and players
                 // Start
                 LoadGames();
                 LoadAccounts();
+
+                ServerEmulator.GetRandomStatus(Accounts);
 
                 SelectActiveAccounts();
                 SelectGame();
@@ -156,9 +172,16 @@ namespace KursWpf
 
         //public void Restart();
 
-        public void Stop() {
+        public void Stop(bool saveSessions = false) {
 
             SaveLog("Выключение игрового сервера");
+
+            if (saveSessions)
+            {
+                SerializeSessionsGames();
+            }
+
+
             _serverWork = false;
         }
 
@@ -195,10 +218,34 @@ namespace KursWpf
             BinaryFormatter formatter = new BinaryFormatter();
 
             using (FileStream fs = new FileStream("sessions.dat", FileMode.OpenOrCreate)) {
-                List<GameServer> newPerson = (List<GameServer>)formatter.Deserialize(fs);
+                Games = (List<GameServer>)formatter.Deserialize(fs);
+
+                //QueueActiveAccount = Games.Select(game => game._listGamers.Select(gamer => gamer)).AsQueryable<Account>();
+
+                foreach (var game in Games)
+                {
+                    foreach (var gamer in game._listGamers)
+                    {
+                        QueueActiveAccount.Enqueue(gamer);
+                    }
+                }
+
+                LoadAccounts();
+
+                foreach (var account in Accounts)
+                {
+                    foreach (var accountActive in QueueActiveAccount)
+                    {
+                        if (account.Id == accountActive.Id)
+                        {
+                            ((Gamer)account).GamerStatus = KursWpf.Status.Online;
+                            break;
+                        }
+                    }
+                }
 
                 //Console.WriteLine("Объект десериализован");
-                
+
             }
         }
 

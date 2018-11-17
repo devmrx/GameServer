@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursWpf.Games
 {
+    [Serializable]
     class Chess : GameServer
     {
         public Chess() {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursWpf.Games
 {
+    [Serializable]
     public abstract class GameServer : IComparable<GameServer>{
 
         public string Name { get; set; }

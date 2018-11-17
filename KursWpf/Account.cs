@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursWpf
 {
+    [Serializable]
     public class Account
     {
         public int Id { get; set; }
@@ -18,7 +19,9 @@ namespace KursWpf
         public Account() {
         }
 
-        public Account(string login, string passwordHash) {
+        public Account(int id, string login, string passwordHash)
+        {
+            Id = id;
             Login = login;
             PasswordHash = passwordHash;
         }

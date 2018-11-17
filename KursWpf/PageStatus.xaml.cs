@@ -150,12 +150,14 @@ namespace KursWpf {
 
 
             if (_server._serverWork) {
-                _server.Stop();
+                _server.Stop(true);
 
                 _resetEvent.Reset();
                 //FreeConsole();
             }
         }
+
+        
 
     }
 }

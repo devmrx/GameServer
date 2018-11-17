@@ -30,7 +30,9 @@ namespace KursWpf {
 
             _server = new Server();
             _server.SetWorkerM(LogWriter.GetInst().WriteFileL);
-           
+            _server.QuestionOutput = QuestionWindow;
+
+
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e) {
@@ -63,5 +65,12 @@ namespace KursWpf {
 
             LogWriter.GetInst().Dispose();
         }
+
+        public bool QuestionWindow(string question) {
+            DialogWindow dialogWindow = new DialogWindow(question);
+
+            return dialogWindow.ShowDialog() == true;
+        }
+
     }
 }

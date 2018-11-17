@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KursWpf.Games
 {
+    [Serializable]
     class GameSession {
 
         public int MaxCountGamers { get; set; }
